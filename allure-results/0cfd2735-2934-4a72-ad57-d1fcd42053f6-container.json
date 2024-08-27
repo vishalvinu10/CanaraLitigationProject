@@ -1,0 +1,1 @@
+{"uuid":"0cfd2735-2934-4a72-ad57-d1fcd42053f6","name":"drt.TC_DRT_O013$drtcaseadd","children":["70f7a922-c586-4b2e-bd1f-926f5e4e97cd"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1724394096721,"stop":1724394103272}],"afters":[],"start":1724394096673,"stop":1724394140979}

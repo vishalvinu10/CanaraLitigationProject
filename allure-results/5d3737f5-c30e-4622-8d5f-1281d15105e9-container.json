@@ -1,0 +1,1 @@
+{"uuid":"5d3737f5-c30e-4622-8d5f-1281d15105e9","name":"nf607.Nf607fluentwait$nf607caseadd","children":["af20c1f0-f612-43e2-adaa-b1630d781608"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1724142632760,"stop":1724142638365}],"afters":[],"start":1724142632707,"stop":1724142663788}

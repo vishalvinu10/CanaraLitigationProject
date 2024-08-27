@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [smoketesting]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="functionalitytest(failed)">
+    <classes>
+      <class name="nf607.Nf607forwardtoho">
+        <methods>
+          <include name="tearDown"/>
+          <include name="testNF607forwardtoHO"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- nf607.Nf607forwardtoho -->
+      <class name="nf607.Nf607forwardtoco">
+        <methods>
+          <include name="testNF607forwardtoCO"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- nf607.Nf607forwardtoco -->
+      <class name="nf607.Nf607addcase">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="testAddNF607case"/>
+        </methods>
+      </class> <!-- nf607.Nf607addcase -->
+      <class name="nf607.Nf607approvefromho">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testNF607approveHO"/>
+        </methods>
+      </class> <!-- nf607.Nf607approvefromho -->
+      <class name="nf607.Nf607forwardtoro">
+        <methods>
+          <include name="testNF607forwardtoRO"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- nf607.Nf607forwardtoro -->
+    </classes>
+  </test> <!-- functionalitytest(failed) -->
+</suite> <!-- Failed suite [smoketesting] -->

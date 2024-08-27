@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="smoketesting">
+  <test thread-count="5" name="functionalitytest">
+    <classes>
+    	<class name="nf607.Nf607addcase"/>
+    	<class name="nf607.Nf607forwardtoro"/>
+      	<class name="nf607.Nf607forwardtoco"/>      
+      	<class name="nf607.Nf607forwardtoho"/>
+     	 <class name="nf607.Nf607approvefromho"/>
+      
+    </classes>
+  </test> <!-- functionalitytest -->
+</suite> <!-- smoketesting -->
