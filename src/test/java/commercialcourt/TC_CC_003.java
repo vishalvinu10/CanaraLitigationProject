@@ -32,13 +32,13 @@ public class TC_CC_003 {
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    }
 
-//	    @AfterClass
-//	    public void tearDown() {
-//	        if (driver != null) {
-//	            driver.quit();
-//	        }
-//	    }
-//	    
+	    @AfterClass
+	    public void tearDown() {
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    }
+	    
 	    // Method to generate a random alphanumeric string of 16 characters
 	    private String generateRandomCNRNumber() {
 	        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
