@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="commercialcourt.TC_CC_007">
+      <class name="commercialcourt.commercialcaseadd">
         <methods>
-          <include name="testcommercialapprove"/>
+          <include name="testAddcommercial"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- commercialcourt.TC_CC_007 -->
+      </class> <!-- commercialcourt.commercialcaseadd -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

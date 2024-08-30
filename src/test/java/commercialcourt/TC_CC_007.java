@@ -70,7 +70,9 @@ public class TC_CC_007 {
 	        WebElement search = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnApprvSearch']")));
 	        js111.executeScript("arguments[0].click();", search);
 	        
-	        WebElement caseNumberElement = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[4]")); // Adjust the XPath if necessary
+	        Thread.sleep(2000);
+	        
+	        WebElement caseNumberElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[4]"))); // Adjust the XPath if necessary
 	        String selectedCaseNumber = caseNumberElement.getText();
 	        System.out.println("The selected case number for approval is: " + selectedCaseNumber);
 	        
@@ -98,7 +100,44 @@ public class TC_CC_007 {
 	        js1111111.executeScript("arguments[0].click();", clickokagain);
 	        
 	        System.out.println("Approved case number: " + selectedCaseNumber + " successfully");
-         
+	        
+	        Thread.sleep(2000);
+	       
+	       	JavascriptExecutor liti = (JavascriptExecutor) driver;
+	        WebElement clicklitigation = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[5]/a[1]/span[2]")));
+	        liti.executeScript("arguments[0].click();", clicklitigation);
+	        
+	     	JavascriptExecutor liti1 = (JavascriptExecutor) driver;
+	        WebElement clickcaselisting = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[5]/ul[1]/li[1]/a[1]/span[2]")));
+	        liti1.executeScript("arguments[0].click();", clickcaselisting);
+	        
+	        WebElement NatureofCase1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/fieldset[1]/select[1]")));
+	        Select NatureofCaseSelect1 = new Select(NatureofCase1);
+	        NatureofCaseSelect1.selectByVisibleText("Commercial Court");
+	        
+	        Thread.sleep(2000);
+	        
+	        JavascriptExecutor liti11 = (JavascriptExecutor) driver;
+	        WebElement clicksearchElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnCListSearch']")));
+	        liti11.executeScript("arguments[0].click();", clicksearchElement);
+	        
+	        Thread.sleep(2000);
+	        
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        js.executeScript("window.scrollBy(0,250)");
+	        
+	        Thread.sleep(2000);
+	        
+	        WebElement caseNumberbaryear =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[1]/td[2]"))); // Adjust the XPath if necessary
+	        String selectedCaseNumber1 = caseNumberbaryear.getText();
+	              
+	        if (selectedCaseNumber.equals(selectedCaseNumber1)) {
+	            System.out.println("Success: The case number approved matches the case number in case listing which is " + selectedCaseNumber);
+	        } else {
+	            System.out.println("Error: The case number approved does not match the case number in case listing.");
+	        }
+	        
+	        
      }
          
 
