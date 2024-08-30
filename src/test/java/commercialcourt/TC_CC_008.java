@@ -41,8 +41,8 @@ public class TC_CC_008 {
 	 @Test(priority=1)
 	    public void testcommercialapprove() throws InterruptedException {
 		 
-//		 	driver.get("http://192.168.0.137:8955/");
-	        driver.get("https://safallitigation.onlinesafe.in/");
+		 	driver.get("http://192.168.0.137:8955/");
+//	        driver.get("https://safallitigation.onlinesafe.in/");
 
 	        WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"TxtAuthvalue\"]")));
 	        usernameField.sendKeys("BM");

@@ -31,12 +31,12 @@ public class TC_CC_007 {
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    }
 
-//	    @AfterClass
-//	    public void tearDown() {
-//	        if (driver != null) {
-//	            driver.quit();
-//	        }
-//	    }
+	    @AfterClass
+	    public void tearDown() {
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    }
 
 
 	

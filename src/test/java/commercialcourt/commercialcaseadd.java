@@ -81,8 +81,8 @@ public class commercialcaseadd {
 	    public void testAddcommercial() throws InterruptedException {
 	    	
 	    
-//	        driver.get("http://192.168.0.137:8955/");
-	    	driver.get("https://safallitigation.onlinesafe.in/");
+	        driver.get("http://192.168.0.137:8955/");
+//	    	driver.get("https://safallitigation.onlinesafe.in/");
 
 	        WebElement usernameField = driver.findElement(By.xpath("//*[@id=\"TxtAuthvalue\"]"));
 	        usernameField.sendKeys("BU");
