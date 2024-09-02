@@ -2,24 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-30T17:58:07 IST" name="Default suite" finished-at="2024-08-30T17:58:44 IST" duration-ms="36226">
+  <suite started-at="2024-09-02T17:35:29 IST" name="Default suite" finished-at="2024-09-02T17:35:42 IST" duration-ms="13448">
     <groups>
     </groups>
-    <test started-at="2024-08-30T17:58:07 IST" name="Default test" finished-at="2024-08-30T17:58:44 IST" duration-ms="36226">
-      <class name="commercialcourt.TC_CC_007">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:commercialcourt.TC_CC_007@8ad6665]" started-at="2024-08-30T17:58:07 IST" name="setUp" finished-at="2024-08-30T17:58:12 IST" duration-ms="4828" status="PASS">
+    <test started-at="2024-09-02T17:35:29 IST" name="Default test" finished-at="2024-09-02T17:35:42 IST" duration-ms="13448">
+      <class name="sarfesi.Eligible$sarfesieligible">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:sarfesi.Eligible$sarfesieligible@39655d3e]" started-at="2024-09-02T17:35:29 IST" name="setUp" finished-at="2024-09-02T17:35:32 IST" duration-ms="3398" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testcommercialapprove()[pri:1, instance:commercialcourt.TC_CC_007@8ad6665]" started-at="2024-08-30T17:58:12 IST" name="testcommercialapprove" finished-at="2024-08-30T17:58:43 IST" duration-ms="30654" status="PASS">
+        <test-method signature="testsarfesieligible()[pri:1, instance:sarfesi.Eligible$sarfesieligible@39655d3e]" started-at="2024-09-02T17:35:32 IST" name="testsarfesieligible" finished-at="2024-09-02T17:35:42 IST" duration-ms="9870" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testcommercialapprove -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:commercialcourt.TC_CC_007@8ad6665]" started-at="2024-08-30T17:58:43 IST" name="tearDown" finished-at="2024-08-30T17:58:44 IST" duration-ms="509" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- commercialcourt.TC_CC_007 -->
+        </test-method> <!-- testsarfesieligible -->
+      </class> <!-- sarfesi.Eligible$sarfesieligible -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="commercialcourt.commercialcaseadd">
+      <class name="sarfesi.Eligible$sarfesieligible">
         <methods>
-          <include name="testAddcommercial"/>
+          <include name="testsarfesieligible"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- commercialcourt.commercialcaseadd -->
+      </class> <!-- sarfesi.Eligible$sarfesieligible -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

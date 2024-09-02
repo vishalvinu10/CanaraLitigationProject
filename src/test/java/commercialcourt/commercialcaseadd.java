@@ -32,13 +32,13 @@ public class commercialcaseadd {
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    }
 
-//	    @AfterClass
-//	    public void tearDown() {
-//	        if (driver != null) {
-//	            driver.quit();
-//	        }
-//	    }
-//	    
+	    @AfterClass
+	    public void tearDown() {
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    }
+	    
 	    // Method to generate a random alphanumeric string of 16 characters
 	    private String generateRandomCNRNumber() {
 	        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -81,8 +81,8 @@ public class commercialcaseadd {
 	    public void testAddcommercial() throws InterruptedException {
 	    	
 	    
-	        driver.get("http://192.168.0.137:8955/");
-//	    	driver.get("https://safallitigation.onlinesafe.in/");
+//	        driver.get("http://192.168.0.137:8955/");
+	    	driver.get("https://safallitigation.onlinesafe.in/");
 
 	        WebElement usernameField = driver.findElement(By.xpath("//*[@id=\"TxtAuthvalue\"]"));
 	        usernameField.sendKeys("BU");

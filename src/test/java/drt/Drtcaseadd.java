@@ -36,14 +36,14 @@ public class Drtcaseadd {
 		    
 		    
 
-//		    @AfterClass
-//		    public void tearDown() {
-//		        if (driver != null) {
-//		        	driver.close();
-//
-//		        }
-//		    }
-//		    
+		    @AfterClass
+		    public void tearDown() {
+		        if (driver != null) {
+		        	driver.close();
+
+		        }
+		    }
+		    
 			// Method to generate a random 5-digit number
 			private String generateRandomDiaryNumber() {
 				Random random = new Random();
@@ -71,7 +71,10 @@ public class Drtcaseadd {
 				
 		    @Test(priority=1)
 		    public void testAdddrtcase() throws InterruptedException {
+		    	
 		        driver.get("https://safallitigation.onlinesafe.in/");
+		        
+//		        driver.get("http://192.168.0.137:8955/");
 
 		        WebElement usernameField = driver.findElement(By.xpath("//*[@id=\"TxtAuthvalue\"]"));
 		        usernameField.sendKeys("BU");
