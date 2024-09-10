@@ -3,6 +3,7 @@ package nclt;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -40,13 +41,13 @@ public class Ncltaddcase {
 		
 	}
 	
-	    @AfterClass
-	    public void tearDown() {
-	        if (driver != null) {
-	            driver.quit();
-	        }
-	    }
-	    
+//	    @AfterClass
+//	    public void tearDown() {
+//	        if (driver != null) {
+//	            driver.quit();
+//	        }
+//	    }
+//	    
 	    
 		// Method to generate a random 5-digit number
 		private String generateRandomDiaryNumber() {
@@ -81,23 +82,28 @@ public class Ncltaddcase {
 		 WebElement signInButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"ButSignin\"]")));
 		 signInButton.click();
 		 
+		 JavascriptExecutor clicknpa = (JavascriptExecutor) driver;
 		 WebElement clicknpaElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='NPA']")));
-		 clicknpaElement.click();
+		 clicknpa.executeScript("arguments[0].click();", clicknpaElement);
 		 
+		 JavascriptExecutor clickaddcase = (JavascriptExecutor) driver;
 		 WebElement clickaddcaseElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='NPA']//following::span[normalize-space()='Add Cases']")));
-		 clickaddcaseElement.click();
+		 clickaddcase.executeScript("arguments[0].click();", clickaddcaseElement);
 		 
+		 
+		 JavascriptExecutor clickthreedots = (JavascriptExecutor) driver;
 		 WebElement clickthreedotsElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='2_33314393']//i[@class='fa fa-ellipsis-v']")));
-		 clickthreedotsElement.click();
+		 clickthreedots.executeScript("arguments[0].click();", clickthreedotsElement);
 		 
 		 
+		 JavascriptExecutor clickNCLT = (JavascriptExecutor) driver;
 		 WebElement clickNCLTElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='1_42987221']//i[@class='fa fa-ellipsis-v']//following::a[@id='81']")));
-		 clickNCLTElement.click();
+		 clickNCLT.executeScript("arguments[0].click();", clickNCLTElement);
 		 
 		//MASTER PAGE
-		 
+		 JavascriptExecutor clickclosebutton = (JavascriptExecutor) driver;
 		 WebElement clickclosebuttonElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='CloseNCLTCustOtherCaseDetailsLoad']//span[@aria-hidden='true'][normalize-space()='×']")));
-		 clickclosebuttonElement.click();
+		 clickclosebutton.executeScript("arguments[0].click();", clickclosebuttonElement);
 		 
 		 WebElement provsion =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTProvision']")));
 		 provsion.sendKeys("4565");
@@ -126,10 +132,34 @@ public class Ncltaddcase {
 		 JavascriptExecutor js = (JavascriptExecutor) driver;
 		 js.executeScript("window.scrollBy(0,2000)");
 		 
-		 WebElement applicatioU =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTApplicationUSe']")));
-		 Select applicatioUSelect = new Select(applicatioU);
-		 applicatioUSelect.selectByVisibleText("Section 7");
+//		 WebElement applicatioU =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTApplicationUSe']")));
+//		 Select applicatioUSelect = new Select(applicatioU);
+//		 applicatioUSelect.selectByVisibleText("Section 7");
 		 
+		 WebElement applicatioU = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTApplicationUSe']")));
+		 // Creating a Select object
+		 Select applicatioUSelect = new Select(applicatioU);
+		 // Getting available options from the dropdown
+		 System.out.println("Available options in the dropdown:");
+		 for (WebElement option : applicatioUSelect.getOptions()) {
+			 System.out.println(option.getText());
+	        }
+
+		 // Taking input from the user
+		 Scanner scanner = new Scanner(System.in);
+		 System.out.print("Enter the option you want to select: ");
+		 String selectedOption = scanner.nextLine();
+
+		 // Selecting the option entered by the user
+		 try {
+			 	applicatioUSelect.selectByVisibleText(selectedOption);
+			 	System.out.println("Selected option applicatioU: " + selectedOption);
+	        } catch (Exception e) {
+	            System.out.println("The option '" + selectedOption + "' is not available in the dropdown.");
+	        }
+
+		 scanner.close();
+	    	 
 		 WebElement applicanttype =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTApplicationTyp']")));
 		 Select applicanttypeSelect = new Select(applicanttype);
 		 applicanttypeSelect.selectByVisibleText("Financial Creditor");
