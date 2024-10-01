@@ -1,0 +1,1 @@
+{"uuid":"e2fd0e37-09e0-4dce-9778-054c5dfff0a5","name":"nclt.Ncltaddcase","children":["58b13125-8021-4325-82f6-5915222cc813"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1726029540630,"stop":1726029547795}],"afters":[],"start":1726029540583,"stop":1726029575710}
