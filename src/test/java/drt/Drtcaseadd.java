@@ -36,13 +36,13 @@ public class Drtcaseadd {
 		    
 		    
 
-		    @AfterClass
-		    public void tearDown() {
-		        if (driver != null) {
-		        	driver.close();
-
-		        }
-		    }
+//		    @AfterClass
+//		    public void tearDown() {
+//		        if (driver != null) {
+//		        	driver.close();
+//
+//		        }
+//		    }
 		    
 			// Method to generate a random 5-digit number
 			private String generateRandomDiaryNumber() {

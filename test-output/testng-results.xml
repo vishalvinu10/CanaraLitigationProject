@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-10T11:48:28 IST" name="Default suite" finished-at="2024-09-10T11:49:02 IST" duration-ms="33493">
+  <suite started-at="2024-10-01T12:31:10 IST" name="Default suite" finished-at="2024-10-01T12:32:04 IST" duration-ms="53960">
     <groups>
     </groups>
-    <test started-at="2024-09-10T11:48:28 IST" name="Default test" finished-at="2024-09-10T11:49:02 IST" duration-ms="33493">
-      <class name="nclt.Ncltaddcase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:nclt.Ncltaddcase@386f0da3]" started-at="2024-09-10T11:48:28 IST" name="setUp" finished-at="2024-09-10T11:48:33 IST" duration-ms="5043" status="PASS">
+    <test started-at="2024-10-01T12:31:10 IST" name="Default test" finished-at="2024-10-01T12:32:04 IST" duration-ms="53960">
+      <class name="prelitigationlokadalat.Prelitiaddcase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:prelitigationlokadalat.Prelitiaddcase@79517588]" started-at="2024-10-01T12:31:10 IST" name="setUp" finished-at="2024-10-01T12:31:16 IST" duration-ms="5527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="ncltaddcase()[pri:0, instance:nclt.Ncltaddcase@386f0da3]" started-at="2024-09-10T11:48:33 IST" name="ncltaddcase" finished-at="2024-09-10T11:49:01 IST" duration-ms="27856" status="PASS">
+        <test-method signature="addcasepermant()[pri:1, instance:prelitigationlokadalat.Prelitiaddcase@79517588]" started-at="2024-10-01T12:31:16 IST" name="addcasepermant" finished-at="2024-10-01T12:32:03 IST" duration-ms="47975" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ncltaddcase -->
-      </class> <!-- nclt.Ncltaddcase -->
+        </test-method> <!-- addcasepermant -->
+      </class> <!-- prelitigationlokadalat.Prelitiaddcase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -4,6 +4,19 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,10 +44,8 @@ public class Otsabovetwolac {
 
 		WebDriverManager.chromedriver().clearDriverCache().setup();
 		driver = new ChromeDriver();
-
 		driver.manage().window().maximize();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 
 	}
 
@@ -44,9 +55,10 @@ public class Otsabovetwolac {
 //	            driver.quit();
 //	        }
 //	    }
+	
 
 	@Test(priority=1)
-	public void OTSabovetwolacs() throws InterruptedException {
+	public void OTSabovetwolacs() throws InterruptedException, IOException {
 		
 
 
@@ -64,19 +76,15 @@ public class Otsabovetwolac {
 	        WebElement otsabove = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[9]/ul[1]/li[1]/a[1]/span[2]")));
 	        otsabove.click();
 
-	        WebElement clickeyebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[2]/td[8]/a[1]/i[1]")));
+	        WebElement clickeyebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='BtnOTSCustSelect fa fa-eye']")));
 	        clickeyebutton.click();
 //	        WebElement clickeyebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tbody/tr[1]/td[8]/a[1]/i[1]")));
 //	        clickeyebutton.click();
-	        
-
-	     
-
+	 	
 		
-		//profile (page 1)
 		
 		WebElement nameofthegroup = driver.findElement(By.xpath("//input[@id='TxtOTSGroupName']"));
-		nameofthegroup.sendKeys("test");
+		nameofthegroup.sendKeys("TEST");
 		
 		WebElement originalbranch = driver.findElement(By.xpath("//input[@id='TxtOTSOriginalBranch']"));
 		originalbranch.sendKeys("palakkad");
@@ -352,7 +360,7 @@ public class Otsabovetwolac {
         WebElement clicknext4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[5]/div[3]/div[1]/div[1]/button[1]")));
 	    clicknext4.click();
 
-	   //credit facilities page 5
+	   //credit facilities page 6
 	    
 	    
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -408,7 +416,7 @@ public class Otsabovetwolac {
 	    WebElement clicknext5 = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnOTSNextto7")));
 	    clicknext5.click();
 	    
-	    //securities page 6
+	    //securities page 7
 	    
 	    //details of case of immovable properties
 	    

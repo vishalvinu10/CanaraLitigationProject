@@ -54,7 +54,7 @@ public class Ncltapprove {
 		    }
 		    
 
-			@Test(priority=1)
+			@Test(invocationCount = 2)
 			public void ncltapprove() throws InterruptedException {
 				
 				

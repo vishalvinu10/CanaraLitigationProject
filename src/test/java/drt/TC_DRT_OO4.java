@@ -35,13 +35,13 @@ public class TC_DRT_OO4 {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-        	driver.close();
-
-        }
-    }
+//    @AfterClass
+//    public void tearDown() {
+//        if (driver != null) {
+//        	driver.close();
+//
+//        }
+//    }
 
     // Method to generate a random numeric string of specified length
     private String generateRandomNumericString(int length) {

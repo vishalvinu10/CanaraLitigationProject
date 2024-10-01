@@ -69,7 +69,7 @@ public class Ncltaddcase {
 	    
 	   
 
-	@Test
+	@Test()
 	public void ncltaddcase() throws InterruptedException {
 		
 
@@ -92,12 +92,12 @@ public class Ncltaddcase {
 		 
 		 
 		 JavascriptExecutor clickthreedots = (JavascriptExecutor) driver;
-		 WebElement clickthreedotsElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='2_33314393']//i[@class='fa fa-ellipsis-v']")));
+		 WebElement clickthreedotsElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[5]/td[9]/div[1]/button[1]/i[1]")));
 		 clickthreedots.executeScript("arguments[0].click();", clickthreedotsElement);
 		 
 		 
 		 JavascriptExecutor clickNCLT = (JavascriptExecutor) driver;
-		 WebElement clickNCLTElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='1_42987221']//i[@class='fa fa-ellipsis-v']//following::a[@id='81']")));
+		 WebElement clickNCLTElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[5]/td[9]/div[1]/div[1]/a[1]")));
 		 clickNCLT.executeScript("arguments[0].click();", clickNCLTElement);
 		 
 		//MASTER PAGE
@@ -127,7 +127,7 @@ public class Ncltaddcase {
 		 casestageSelect.selectByVisibleText("Application Accepted");
 		 
 		 WebElement dateoffiling =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTFilingDate']")));
-		 dateoffiling.sendKeys("09-08-2024");
+		 dateoffiling.sendKeys("12-09-2024");
 		 
 		 JavascriptExecutor js = (JavascriptExecutor) driver;
 		 js.executeScript("window.scrollBy(0,2000)");
@@ -199,15 +199,14 @@ public class Ncltaddcase {
 		 cNRNOElement.sendKeys(generateRandomCNRNumber());
 		 String generatedCNRNumber = generateRandomCNRNumber();
 		 System.out.println("Generated CNR Number: " + generatedCNRNumber);
-		 
-		 
-		 
+ 
 		 WebElement CPIBNo =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtCPIBNo']")));
 		 CPIBNo.sendKeys("5657");
 		 
 		 WebElement caseyearElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpCaseYear']")));
 		 Select caseyearElementSelect = new Select(caseyearElement);
 		 caseyearElementSelect.selectByVisibleText("2024");
+		 
 		 
 		 WebElement clickclosElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"CloseNCLTRespondent\"]/span")));
 		 clickclosElement.click();
