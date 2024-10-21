@@ -32,12 +32,12 @@ public class commercialcaseadd {
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    }
 
-	    @AfterClass
-	    public void tearDown() {
-	        if (driver != null) {
-	            driver.quit();
-	        }
-	    }
+//	    @AfterClass
+//	    public void tearDown() {
+//	        if (driver != null) {
+//	            driver.quit();
+//	        }
+//	    }
 	    
 	    // Method to generate a random alphanumeric string of 16 characters
 	    private String generateRandomCNRNumber() {
@@ -103,32 +103,32 @@ public class commercialcaseadd {
 	        WebElement clickthreedots = driver.findElement(By.xpath("(//i[@class='fa fa-ellipsis-v'])[1]"));
 	        js111.executeScript("arguments[0].click();", clickthreedots);
 	        
-	        try {
+//	        try {
 	             
 	        JavascriptExecutor js1111 = (JavascriptExecutor) driver;
 	        WebElement clickcommercial = driver.findElement(By.xpath("(//a[normalize-space()='Commercial Court'])[1]"));
 	        js1111.executeScript("arguments[0].click();", clickcommercial);
 	        
 	        
-	        wait.until(ExpectedConditions.alertIsPresent());
-            // Switch to the alert
-            Alert alert = driver.switchTo().alert();
-            // Print the alert text (optional, for debugging purposes)
-            System.out.println("Alert text: " + alert.getText());
-            // Accept the alert (click OK button)
-            alert.accept();
-
-        } catch (UnhandledAlertException e) {
-            // This block handles the case where the alert wasn't handled properly
-            System.out.println("Unhandled alert exception caught: " + e.getMessage());
-            // Attempt to switch to the alert and accept it
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
-
-        } 
+//	        wait.until(ExpectedConditions.alertIsPresent());
+//            // Switch to the alert
+//            Alert alert = driver.switchTo().alert();
+//            // Print the alert text (optional, for debugging purposes)
+//            System.out.println("Alert text: " + alert.getText());
+//            // Accept the alert (click OK button)
+//            alert.accept();
+//
+//        } catch (UnhandledAlertException e) {
+//            // This block handles the case where the alert wasn't handled properly
+//            System.out.println("Unhandled alert exception caught: " + e.getMessage());
+//            // Attempt to switch to the alert and accept it
+//            Alert alert = driver.switchTo().alert();
+//            alert.accept();
+//
+//        } 
 	        	         
 	        JavascriptExecutor js11111 = (JavascriptExecutor) driver;
-	        WebElement clickclose = driver.findElement(By.xpath("//button[@id='CloseComCustOtherCaseDetailsLoad']//span[@aria-hidden='true'][normalize-space()='×']"));
+	        WebElement clickclose = driver.findElement(By.xpath("(//span[@aria-hidden='true'][normalize-space()='×'])[8]"));
 	        js11111.executeScript("arguments[0].click();", clickclose);
 	        
 	        
@@ -212,8 +212,8 @@ public class commercialcaseadd {
 	        RoleofBankSelect.selectByVisibleText("Petitioner(s)");
 	        
 	        
-	        JavascriptExecutor js1111 = (JavascriptExecutor) driver;
-	        js1111.executeScript("window.scrollBy(0,2000)");
+	        JavascriptExecutor js4 = (JavascriptExecutor) driver;
+	        js4.executeScript("window.scrollBy(0,2000)");
 	        
 	        
 	        //Suit Amount in Rs.(Actuals)

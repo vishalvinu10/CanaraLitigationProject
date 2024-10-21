@@ -67,7 +67,6 @@ public class Ncltaddcase {
 	        return cnrNumber.toString();
 	    }
 	    
-	   
 
 	@Test()
 	public void ncltaddcase() throws InterruptedException {
@@ -92,12 +91,12 @@ public class Ncltaddcase {
 		 
 		 
 		 JavascriptExecutor clickthreedots = (JavascriptExecutor) driver;
-		 WebElement clickthreedotsElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[5]/td[9]/div[1]/button[1]/i[1]")));
+		 WebElement clickthreedotsElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//i[@class='fa fa-ellipsis-v'])[2]")));
 		 clickthreedots.executeScript("arguments[0].click();", clickthreedotsElement);
 		 
 		 
 		 JavascriptExecutor clickNCLT = (JavascriptExecutor) driver;
-		 WebElement clickNCLTElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[5]/td[9]/div[1]/div[1]/a[1]")));
+		 WebElement clickNCLTElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[@id='81'])[1]")));
 		 clickNCLT.executeScript("arguments[0].click();", clickNCLTElement);
 		 
 		//MASTER PAGE
@@ -106,9 +105,9 @@ public class Ncltaddcase {
 		 clickclosebutton.executeScript("arguments[0].click();", clickclosebuttonElement);
 		 
 		 WebElement provsion =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTProvision']")));
-		 provsion.sendKeys("4565");
+		 provsion.sendKeys("6767");
 		 WebElement LEInumber =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTLEINo']")));
-		 LEInumber.sendKeys("6757");
+		 LEInumber.sendKeys("6876");
 		 
 		 WebElement nameofthecourt =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTCourtName']")));
 		 Select nameofthecourtSelect = new Select(nameofthecourt);
@@ -127,7 +126,7 @@ public class Ncltaddcase {
 		 casestageSelect.selectByVisibleText("Application Accepted");
 		 
 		 WebElement dateoffiling =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTFilingDate']")));
-		 dateoffiling.sendKeys("12-09-2024");
+		 dateoffiling.sendKeys("09-10-2024");
 		 
 		 JavascriptExecutor js = (JavascriptExecutor) driver;
 		 js.executeScript("window.scrollBy(0,2000)");
@@ -183,9 +182,7 @@ public class Ncltaddcase {
 		 WebElement intresttype =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@id='DrpNCLTInterestTyp']")));
 		 Select intresttypeSelect = new Select(intresttype);
 		 intresttypeSelect.selectByVisibleText("Simple Interest");
-		 
-	        
-	 
+		 	        
 		 WebElement diarynoElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='TxtNCLTDiaryNo']")));
 		 String generatedDiaryNumber = generateRandomDiaryNumber();
 		 diarynoElement.sendKeys(generatedDiaryNumber);
@@ -211,8 +208,12 @@ public class Ncltaddcase {
 		 WebElement clickclosElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"CloseNCLTRespondent\"]/span")));
 		 clickclosElement.click();
 		 
+		 Thread.sleep(2000);
+		 
 		 WebElement clicksaveeElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnNCLTSave']")));
 		 clicksaveeElement.click();
+		 Thread.sleep(2000);
+		 
 		 WebElement clickokElement =  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='confirm btn btn-lg btn-success']")));
 		 clickokElement.click();
 		 
@@ -230,5 +231,3 @@ public class Ncltaddcase {
 	
 }
 	 
-	    
-	

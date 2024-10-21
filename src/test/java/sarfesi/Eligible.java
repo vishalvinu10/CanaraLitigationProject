@@ -5,8 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -67,6 +69,7 @@ public class Eligible {
 		        // clicking the eye button
 		        
 		        String[] xpaths = {
+		        		
 		                "//tbody/tr[1]/td[9]/a[1]/i[1]",
 		                "//tbody/tr[2]/td[9]/a[1]/i[1]",
 		                "//tbody/tr[3]/td[9]/a[1]/i[1]",
@@ -114,39 +117,76 @@ public class Eligible {
 		            } catch (Exception e) {
 		                System.out.println("Failed to click the element - " + e.getMessage());
 		            }
+		            
+		            
+		            //alert handling 
+		            
+//		            try {
+//		            wait.until(ExpectedConditions.alertIsPresent());
+//		            // Switch to the alert
+//		            Alert alert = driver.switchTo().alert();
+//		            // Print the alert text (optional, for debugging purposes)
+//		            System.out.println("Alert text: " + alert.getText());
+//		            // Accept the alert (click OK button)
+//		            alert.accept();
+//
+//		        } catch (UnhandledAlertException e) {
+//		            // This block handles the case where the alert wasn't handled properly
+//		            System.out.println("Unhandled alert exception caught: " + e.getMessage());
+//		            // Attempt to switch to the alert and accept it
+//		            Alert alert = driver.switchTo().alert();
+//		            alert.accept();
+//
+//		        } 
 		        		        
 		      
 		        JavascriptExecutor js51 = (JavascriptExecutor) driver;
 		        WebElement othercaseclosebuttom = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='CloseSFCustOtherCaseDetailsLoad']//span[@aria-hidden='true'][normalize-space()='×']")));
 		        js51.executeScript("arguments[0].click();", othercaseclosebuttom);
-		        
-		        //security assets
-		        
-		        JavascriptExecutor js511 = (JavascriptExecutor) driver;
-		        WebElement clicksecurityassets = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnSarfaesiAsset']")));
-		        js511.executeScript("arguments[0].click();", clicksecurityassets);
-		        
-		        // List of account numbers
-		        List<String> accountNumbers = Arrays.asList("101151939001", "93173387001", "58270079002", "64909988007", 
-		                                                    "0769856003707001", "52232963001", "6466823002", "121749246001", 
-		                                                    "11192342478011", "112100264001074123", "27784136XB", 
-		                                                    "1156249230006", "31326284OA", "4183603000002001V", 
-		                                                    "1875740004304001", "61814468006", "0205768000057001", 
-		                                                    "83566613003", "31457943BUILD", "107783836005", 
-		                                                    "2100261001064001", "56249230006", "35610652SKCC");
+		        	    
+		    
 
-		        for (String accountNumber : accountNumbers) {
+//		        //Secured Assets
+		        
+		        JavascriptExecutor js58 = (JavascriptExecutor) driver;
+		        WebElement clicksecurityassets = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnSarfaesiAsset']")));
+		        js58.executeScript("arguments[0].click();", clicksecurityassets);
+
+		        // List of account numbers
+		        List<String> accountNumbers1 = Arrays.asList("101151939001", "93173387001", "58270079002", "64909988007", 
+		                                                     "0769856003707001", "52232963001", "6466823002", "121749246001", 
+		                                                     "11192342478011", "112100264001074123", "27784136XB", 
+		                                                     "1156249230006", "31326284OA", "4183603000002001V", 
+		                                                     "1875740004304001", "61814468006", "0205768000057001", 
+		                                                     "83566613003", "31457943BUILD", "107783836005", 
+		                                                     "2100261001064001", "56249230006","6466823002" , "35610652SKCC");
+
+		        boolean checkboxesFound = false;
+
+		        for (String accountNumber : accountNumbers1) {
 		            String xpathExpression = String.format("//input[@id='CheckAcc_%s']", accountNumber);
 
 		            try {
 		                // Check if the element is present on the page without waiting too long
 		                List<WebElement> elements = driver.findElements(By.xpath(xpathExpression));
 
-		                // Click each visible element
-		                for (WebElement element : elements) {
+		                if (elements.size() == 1) {
+		                    // If only one checkbox is found, click it and stop
+		                    WebElement element = elements.get(0);
 		                    if (element.isDisplayed()) {
 		                        JavascriptExecutor js = (JavascriptExecutor) driver;
 		                        js.executeScript("arguments[0].click();", element);
+		                        checkboxesFound = true;  // Checkbox found and clicked
+		                        break;  // Stop loop as we only want to click one checkbox in this case
+		                    }
+		                } else if (elements.size() > 1) {
+		                    // If multiple checkboxes are found, click all of them
+		                    for (WebElement element : elements) {
+		                        if (element.isDisplayed()) {
+		                            JavascriptExecutor js = (JavascriptExecutor) driver;
+		                            js.executeScript("arguments[0].click();", element);
+		                            checkboxesFound = true;  // Checkbox found and clicked
+		                        }
 		                    }
 		                }
 
@@ -155,31 +195,91 @@ public class Eligible {
 		            }
 		        }
 
-		        // Proceed to the "Add" section after clicking all visible account checkboxes
-		        try {
-		            JavascriptExecutor js531 = (JavascriptExecutor) driver;
-		            WebElement add = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiAssetAdd")));
-		            js531.executeScript("arguments[0].click();", add);
-		        } catch (Exception e) {
-		            System.out.println("Failed to click the 'Add' button - " + e.getMessage());
+		        // Proceed to "Add" if checkboxes were found, otherwise proceed to "Close"
+		        if (checkboxesFound) {
+		            try {
+		                JavascriptExecutor js531 = (JavascriptExecutor) driver;
+		                WebElement add = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiAssetAdd")));
+		                js531.executeScript("arguments[0].click();", add);
+		                System.out.println("Add button clicked after ticking checkboxes.");
+		            } catch (Exception e) {
+		                System.out.println("Failed to click the 'Add' button - " + e.getMessage());
+		            }
+		        } else {
+		            try {
+		                JavascriptExecutor js53 = (JavascriptExecutor) driver;
+		                WebElement close = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='CloseSarfaesiAsset']//span[@aria-hidden='true'][normalize-space()='×']")));
+		                js53.executeScript("arguments[0].click();", close);
+		                System.out.println("No checkboxes found, so closed the modal.");
+		            } catch (Exception e) {
+		                System.out.println("Failed to click the 'Close' button - " + e.getMessage());
+		            }
 		        }
 
+		
+//		        Guarantor/Legal Heir/Co-Obligant/Co-Borrower Details  //data 4 jayaraman
 		        
-//		        Guarantor/Legal Heir/Co-Obligant/Co-Borrower Details
+		       
 		        
-//		        JavascriptExecutor js5311 = (JavascriptExecutor) driver;
-//		        WebElement Guarantor = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnSarfaesiGuarantor']")));
-//		        js5311.executeScript("arguments[0].click();", Guarantor);
-		        
-//		        JavascriptExecutor js5111 = (JavascriptExecutor) driver;
-//		        WebElement savebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnSarfaesiSave']")));
-//		        js5111.executeScript("arguments[0].click();", savebutton);
-//		        
-//		        JavascriptExecutor js51111 = (JavascriptExecutor) driver;
-//		        WebElement okElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[3]/div[7]/div[1]/button[1]")));
-//		        js51111.executeScript("arguments[0].click();", okElement);
+		        JavascriptExecutor js5311 = (JavascriptExecutor) driver;
+		        WebElement coborrower = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='BtnSarfaesiGuarantor']")));
+		        js5311.executeScript("arguments[0].click();", coborrower);
 		        
 		        
+		        List<WebElement> checkboxes1 = driver.findElements(By.className("Checkboxcheckcondition"));
+
+	            // Loop through the list and check each checkbox
+	            for (WebElement checkbox : checkboxes1) {
+	                // Check if the checkbox is not already selected
+	                if (!checkbox.isSelected()) {
+	                    checkbox.click();
+	                }
+	            }
+	            
+	            JavascriptExecutor js53111 = (JavascriptExecutor) driver;
+		        WebElement add = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiGuarantorAdd")));
+		        js53111.executeScript("arguments[0].click();", add);
+		        
+		        JavascriptExecutor js531111 = (JavascriptExecutor) driver;
+		        WebElement Guarantor = wait.until(ExpectedConditions.elementToBeClickable(By.id("GuarantorDRT")));
+		        js531111.executeScript("arguments[0].click();", Guarantor);
 		        
 		        
+		        List<WebElement> checkboxes2 = driver.findElements(By.className("Checkboxcheckcondition"));
+
+	            // Loop through the list and check each checkbox
+	            for (WebElement checkbox : checkboxes2) {
+	                // Check if the checkbox is not already selected
+	                if (!checkbox.isSelected()) {
+	                    checkbox.click();
+	                }
+	            }
+	            
+	            JavascriptExecutor js5311111 = (JavascriptExecutor) driver;
+		        WebElement add1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiGuarantorAdd")));
+		        js5311111.executeScript("arguments[0].click();", add1);
+		        
+		        JavascriptExecutor js53111111 = (JavascriptExecutor) driver;
+		        WebElement legalElement  = wait.until(ExpectedConditions.elementToBeClickable(By.id("LegalHeirDRT")));
+		        js53111111.executeScript("arguments[0].click();", legalElement);
+		        
+		        List<WebElement> checkboxes3 = driver.findElements(By.className("Checkboxcheckcondition"));
+
+	            // Loop through the list and check each checkbox
+	            for (WebElement checkbox : checkboxes3) {
+	                // Check if the checkbox is not already selected
+	                if (!checkbox.isSelected()) {
+	                    checkbox.click();
+	                }
+	            }
+	            
+	            JavascriptExecutor js531111111 = (JavascriptExecutor) driver;
+		        WebElement add2 = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiGuarantorAdd")));
+		        js531111111.executeScript("arguments[0].click();", add2);
+		        
+		        JavascriptExecutor js5 = (JavascriptExecutor) driver;
+		        WebElement save = wait.until(ExpectedConditions.elementToBeClickable(By.id("BtnSarfaesiSelectedBorrowerSave")));
+		        js5.executeScript("arguments[0].click();", save);
+	            
+	        
 }}}

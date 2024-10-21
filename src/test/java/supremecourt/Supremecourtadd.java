@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import java.util.List;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Supremecourtadd {
@@ -89,13 +89,25 @@ public class Supremecourtadd {
 	        
 	        
 	        JavascriptExecutor js3 = (JavascriptExecutor) driver;
-	        WebElement clickthreedots = driver.findElement(By.xpath("(//i[@class='fa fa-ellipsis-v'])[2]"));
+	        WebElement clickthreedots = driver.findElement(By.xpath("(//i[@class='fa fa-ellipsis-v'])[1]"));
 	        js3.executeScript("arguments[0].click();", clickthreedots);
 	        
 	        
+//	        JavascriptExecutor js4 = (JavascriptExecutor) driver;
+//	        WebElement clicksupremecourt = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[9]/div[1]/div[1]/a[6]"));
+//	        js4.executeScript("arguments[0].click();", clicksupremecourt);
+	        
 	        JavascriptExecutor js4 = (JavascriptExecutor) driver;
-	        WebElement clicksupremecourt = driver.findElement(By.id("6"));
+	        WebElement clicksupremecourt = driver.findElement(By.xpath("(//a[normalize-space()='Supreme Court'])[1]"));
+
+	        // Scroll into view
+	        js4.executeScript("arguments[0].scrollIntoView(true);", clicksupremecourt);
+
+	        // Click the element
 	        js4.executeScript("arguments[0].click();", clicksupremecourt);
+	        
+	        
+
 	        
 	          
 	        JavascriptExecutor js5 = (JavascriptExecutor) driver;
@@ -169,19 +181,32 @@ public class Supremecourtadd {
 	          builder.moveToElement(element, 0, 0).perform();
 	        }
 	        // 30 | click | id=HCSCSelect_237203088 | 
-	        driver.findElement(By.id("HCSCSelect_237203088")).click();
+//	        driver.findElement(By.id("HCSCSelect_237203088")).click();
 	        // 31 | click | id=HCSCSelect_119225950 | 
-	        driver.findElement(By.id("HCSCSelect_119225950")).click();
-	        // 32 | click | id=HCSCSelect_88933260 | 
-	        driver.findElement(By.id("HCSCSelect_88933260")).click();
-	        // 33 | click | id=HCSCSelect_256931991 | 
-	        driver.findElement(By.id("HCSCSelect_256931991")).click();
-	        // 34 | click | id=HCSCSelect_318791823 | 
-	        driver.findElement(By.id("HCSCSelect_318791823")).click();
-	        // 35 | click | id=HCSCSelect_254604313 | 
-	        driver.findElement(By.id("HCSCSelect_254604313")).click();
-	        // 36 | click | id=HCSCSelect_89875555 | 
-	        driver.findElement(By.id("HCSCSelect_89875555")).click();
+//	        driver.findElement(By.id("HCSCSelect_119225950")).click();
+//	        // 32 | click | id=HCSCSelect_88933260 | 
+//	        driver.findElement(By.id("HCSCSelect_88933260")).click();
+//	        // 33 | click | id=HCSCSelect_256931991 | 
+//	        driver.findElement(By.id("HCSCSelect_256931991")).click();
+//	        // 34 | click | id=HCSCSelect_318791823 | 
+//	        driver.findElement(By.id("HCSCSelect_318791823")).click();
+//	        // 35 | click | id=HCSCSelect_254604313 | 
+//	        driver.findElement(By.id("HCSCSelect_254604313")).click();
+//	        // 36 | click | id=HCSCSelect_89875555 | 
+//	        driver.findElement(By.id("HCSCSelect_89875555")).click();
+	        
+	        // Locate all checkbox elements (adjust the locator as needed)
+            List<WebElement> checkboxes = driver.findElements(By.xpath("//input[starts-with(@id, 'HCSCSelect_') and @type='checkbox']"));
+
+            // Iterate through each checkbox
+            for (WebElement checkbox : checkboxes) {
+                // Check if the checkbox is not already selected
+                if (!checkbox.isSelected()) {
+                    checkbox.click(); // Click to check the checkbox
+                }
+            }
+            
+            
 	        // 37 | click | id=BtnHSBorrowerSave | 
 	        driver.findElement(By.id("BtnHSBorrowerSave")).click();
 	        // 38 | mouseOver | id=BtnHSBorrowerSave | 

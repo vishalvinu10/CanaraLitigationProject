@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-01T12:40:30 IST" name="Default suite" finished-at="2024-10-01T12:41:12 IST" duration-ms="42009">
+  <suite started-at="2024-10-20T21:14:52 IST" name="Default suite" finished-at="2024-10-20T21:16:09 IST" duration-ms="76769">
     <groups>
     </groups>
-    <test started-at="2024-10-01T12:40:30 IST" name="Default test" finished-at="2024-10-01T12:41:12 IST" duration-ms="42009">
-      <class name="prelitigationlokadalat.Prelitiaddcase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:prelitigationlokadalat.Prelitiaddcase@79517588]" started-at="2024-10-01T12:40:30 IST" name="setUp" finished-at="2024-10-01T12:40:33 IST" duration-ms="3262" status="PASS">
+    <test started-at="2024-10-20T21:14:52 IST" name="Default test" finished-at="2024-10-20T21:16:09 IST" duration-ms="76769">
+      <class name="nclt.Admissionorderclaimdetails">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:nclt.Admissionorderclaimdetails@3d1848cc]" started-at="2024-10-20T21:14:52 IST" name="setUp" finished-at="2024-10-20T21:14:56 IST" duration-ms="3545" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="addcasepermant()[pri:1, instance:prelitigationlokadalat.Prelitiaddcase@79517588]" started-at="2024-10-01T12:40:33 IST" name="addcasepermant" finished-at="2024-10-01T12:41:12 IST" duration-ms="38458" status="PASS">
+        <test-method signature="admission()[pri:0, instance:nclt.Admissionorderclaimdetails@3d1848cc]" started-at="2024-10-20T21:14:56 IST" name="admission" finished-at="2024-10-20T21:16:09 IST" duration-ms="73039" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addcasepermant -->
-      </class> <!-- prelitigationlokadalat.Prelitiaddcase -->
+        </test-method> <!-- admission -->
+      </class> <!-- nclt.Admissionorderclaimdetails -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

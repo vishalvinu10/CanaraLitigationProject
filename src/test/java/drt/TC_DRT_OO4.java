@@ -134,7 +134,7 @@ public class TC_DRT_OO4 {
         casestageSelect.selectByVisibleText("Hearing");
 
         WebElement DateofFiling = driver.findElement(By.xpath("//input[@id='TxtFilingDate']"));
-        DateofFiling.sendKeys("01-01-2000");
+        DateofFiling.sendKeys("04-10-2024");
 
         WebElement RoleofBank = driver.findElement(By.xpath("//select[@id='DrpDRTCanaraRole']"));
         Select RoleofBankSelect = new Select(RoleofBank);
