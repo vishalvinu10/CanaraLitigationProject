@@ -27,7 +27,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+//import org.testng.Assert;
+//import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.Scanner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Nf607addcase {
@@ -47,12 +50,12 @@ public class Nf607addcase {
 	        
 	    }
 
-	    @AfterClass
-	    public void tearDown() {
-	        if (driver != null) {
-	            driver.quit();
-	        }
-	    }
+//	    @AfterClass
+//	    public void tearDown() {
+//	        if (driver != null) {
+//	            driver.quit();
+//	        }
+//	    }
 	    
 	    String sactionrefno1 = RandomString(20);
 	    String concurrence1 = RandomAlphabets(50);
@@ -63,8 +66,8 @@ public class Nf607addcase {
 	    String dateofestablishment1 = dateString();
 	    String lineofbusiness1 = RandomAlphabets(50);
 	    String status1 = RandomAlphabets(50);
-	    String networthsanction1 = RandomString(15);
-	    String networthpresent1 = RandomString(15);
+//	    String networthsanction1 = RandomString(15);
+//	    String networthpresent1 = RandomString(15);
 	    String networthatsanction1 = RandomString(15);
 	    String networthatpresent1 = RandomString(15);
 	    String enjoyingcreditlimits1 = dateString();
@@ -112,7 +115,7 @@ public class Nf607addcase {
 	   @Test
 	    public void testAddNF607case() throws InterruptedException, IOException {
 	    	
-	    	 driver.get("https://safallitigation.onlinesafe.in/");
+	    	 driver.get("http://192.168.0.137:8955/");
 	        
 	        WebElement usernameField = driver.findElement(By.xpath("//*[@id=\"TxtAuthvalue\"]"));
 	        usernameField.sendKeys("BU");
@@ -160,52 +163,110 @@ public class Nf607addcase {
 	        WebElement status = driver.findElement(By.xpath("//input[@id='TxtStatus']"));
 	        status.sendKeys(status1);
 	        
-	        //Directors/Partners/Proprietor
+ //-----------------------------------Directors/Partners/Proprietor---------------------------------------------------------------------
+	        
+
+	        
 	        JavascriptExecutor click4 = (JavascriptExecutor) driver;
 	        WebElement clickplusbutton = driver.findElement(By.xpath("//button[@id='BtnDirectors']"));
-	        click4.executeScript("arguments[0].click();", clickplusbutton);
-	        
-	        
-	        WebElement type = driver.findElement(By.xpath("//select[@id='DrpTyp']"));
-	        Select typeSelect = new Select(type);
-	        typeSelect.selectByVisibleText("Directors");
-	        
-	        WebElement accountno = driver.findElement(By.xpath("//select[@id='DrpDirectrAcNo']"));
-	        Select accountnoSelect = new Select(accountno);
-	        accountnoSelect.selectByVisibleText("3535465646353");
-	        
-	        WebElement networthsanction = driver.findElement(By.xpath("//input[@id='TxtNetWorthAtsanctionDirector']"));
-	        networthsanction.sendKeys(networthsanction1);
-	        WebElement networthpresent = driver.findElement(By.xpath("//input[@id='TxtNetWorthAtpresentDirector']"));
-	        networthpresent.sendKeys(networthpresent1);
-	        
-	        String filePath = "C:\\Users\\mvish\\OneDrive\\Desktop\\vishal\\randomnamesexcel.xlsx";
-	        List<String> names = readNamesFromExcel(filePath);
-	        String randomName = getRandomName(names);
 
-	        WebElement name = driver.findElement(By.xpath("//input[@id='TxtDirectorName']"));
-	        name.sendKeys(randomName);
-	        
-	        JavascriptExecutor click5 = (JavascriptExecutor) driver;
-	        WebElement clickadd = driver.findElement(By.xpath("//button[@id='BtnDirectorSave']"));
-	        click5.executeScript("arguments[0].click();", clickadd);
-	        
+	        for (int i = 0; i < 10; i++) {
+	            // Click on the "clickplusbutton"
+	            click4.executeScript("arguments[0].click();", clickplusbutton);
+
+	            // Select "Director" from the dropdown
+	            WebElement type = driver.findElement(By.xpath("//select[@id='DrpTyp']"));
+	            Select typeSelect = new Select(type);
+	            typeSelect.selectByVisibleText("Director");
+
+	            // Interact with the "DrpDirectrAcNo" dropdown
+	            WebElement accountno = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='DrpDirectrAcNo']")));
+	            Select dropdown = new Select(accountno);
+	            List<WebElement> options = dropdown.getOptions();
+
+	            System.out.println("Dropdown Options:");
+	            for (int j = 0; j < options.size(); j++) {
+	                System.out.println(j + 1 + ". " + options.get(j).getText());
+	            }
+
+	            // Read user input for selecting a dropdown option
+	            Scanner scanner = new Scanner(System.in);
+	            System.out.print("Enter the number of the option you want to select: ");
+	            int optionToSelect = scanner.nextInt();
+
+	            // Validate the input and select the option
+	            if (optionToSelect >= 1 && optionToSelect <= options.size()) {
+	                dropdown.selectByIndex(optionToSelect - 1);
+	                System.out.println("Selected option: " + options.get(optionToSelect - 1).getText());
+	            } else {
+	                System.out.println("Invalid option number. Please enter a number between 1 and " + options.size());
+	            }
+
+	            // Generate random values for net worth fields to make them different every time
+	            Random rand = new Random();
+	            String networthsanction1 = String.format("%.2f", 100000 + (rand.nextDouble() * (1000000 - 100000))); // Random value between 100,000 and 1,000,000
+	            String networthpresent1 = String.format("%.2f", 100000 + (rand.nextDouble() * (1000000 - 100000))); // Random value between 100,000 and 1,000,000
+
+	            // Fill in the net worth fields with different values
+	            WebElement networthsanction = driver.findElement(By.xpath("//input[@id='TxtNetWorthAtsanctionDirector']"));
+	            networthsanction.sendKeys(networthsanction1);
+	            WebElement networthpresent = driver.findElement(By.xpath("//input[@id='TxtNetWorthAtpresentDirector']"));
+	            networthpresent.sendKeys(networthpresent1);
+
+	            // Get a random name from the Excel file
+	            String filePath = "C:\\Users\\mvish\\OneDrive\\Desktop\\vishal\\randomnamesexcel.xlsx";
+	            List<String> names = readNamesFromExcel(filePath);
+	            String randomName = getRandomName(names);
+
+	            // Fill in the director's name
+	            WebElement name = driver.findElement(By.xpath("//input[@id='TxtDirectorName']"));
+	            name.sendKeys(randomName);
+
+	            // Click the "clickadd" button to save the director
+	            JavascriptExecutor click5 = (JavascriptExecutor) driver;
+	            WebElement clickadd = driver.findElement(By.xpath("//button[@id='BtnDirectorSave']"));
+	            click5.executeScript("arguments[0].click();", clickadd);
+	        }
+
 	         
 	        //Co-obligant/guarantor
 	        
-	        List<String> accountNumbers = Arrays.asList("229241833", "71485907");
+	        
+	        
+	        
+	        List<String> numbersattheend = Arrays.asList("[1]", "[2]","[3]","[4]","[5]","[6]");
 
-	        for (String accountNumber : accountNumbers) {
-	            String xpathExpression = String.format("//input[@id='TxtSactionAmt607_%s']", accountNumber);
+	        for (String numbers : numbersattheend) {
+	            String xpathExpression = String.format("(//input[contains(@value,'0.00')])", numbers);
 
 	            try {
 	                WebElement networthatsanction = driver.findElement(By.xpath(xpathExpression));
 	                networthatsanction.sendKeys(networthatsanction1);
 
 	            } catch (Exception e) {
-	                System.out.println("Failed to click account checkbox for account: " + accountNumber + " - " + e.getMessage());
+	                System.out.println("Failed to click account checkbox for account: " + numbers + " - " + e.getMessage());
 	            }
 	        }
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
 	        
 	        List<String> accountNumbers1 = Arrays.asList("229241833","71485907");
 

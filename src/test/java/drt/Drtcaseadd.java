@@ -1,6 +1,8 @@
 package drt;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -17,7 +19,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
+import java.util.List;
+import java.util.Scanner;
+import org.testng.Assert;
+import java.util.Scanner;
 
 public class Drtcaseadd {
 	
@@ -72,7 +77,7 @@ public class Drtcaseadd {
 		    @Test(priority=1)
 		    public void testAdddrtcase() throws InterruptedException {
 		    	
-		        driver.get("https://safallitigation.onlinesafe.in/");
+		        driver.get("http://192.168.0.137:8955/");
 		        
 //		        driver.get("http://192.168.0.137:8955/");
 
@@ -91,11 +96,58 @@ public class Drtcaseadd {
 		        WebElement addcase = driver.findElement(By.xpath("//span[normalize-space()='Add Cases']"));
 		        js4.executeScript("arguments[0].click();", addcase);
 		        
+		        // Wait until the toggle dropdowns are visible
+		        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table[@id='Tbl_NPAList']//tr//i[contains(@class, 'fa-ellipsis-v')]")));
+
+		        // Locate all toggle dropdowns after ensuring they are visible
+		        List<WebElement> toggleDropdowns = driver.findElements(By.xpath("//table[@id='Tbl_NPAList']//tr//i[contains(@class, 'fa-ellipsis-v')]"));
+
+		        // Print the number of toggle dropdowns found
+		        System.out.println("Total toggle dropdowns found: " + toggleDropdowns.size());
+
+		        // Ensure there are dropdowns present
+		        if (toggleDropdowns.size() > 0) {
+		            System.out.println("Please enter the index of the toggle dropdown you want to click (starting from 1 for the first item):");
+
+		            // List the available dropdowns for the user
+		            for (int i = 0; i < toggleDropdowns.size(); i++) {
+		                System.out.println((i + 1) + ": " + toggleDropdowns.get(i).getText());
+		            }
+
+		            // Create a scanner to read input from the console
+		            Scanner scanner = new Scanner(System.in);
+		            int selectedIndex = -1;
+		            boolean validIndex = false;
+
+		            // Loop until a valid index is entered
+		            while (!validIndex) {
+		                try {
+		                    selectedIndex = Integer.parseInt(scanner.nextLine()) - 1;  // Adjust the input for 0-based index
+		                    // Ensure the selected index is within the valid range
+		                    if (selectedIndex >= 0 && selectedIndex < toggleDropdowns.size()) {
+		                        validIndex = true;
+		                    } else {
+		                        System.out.println("Invalid index. Please enter a valid index between 1 and " + toggleDropdowns.size() + ":");
+		                    }
+		                } catch (NumberFormatException e) {
+		                    System.out.println("Invalid input. Please enter a valid integer.");
+		                }
+		            }
+
+		            // Wait for the selected dropdown element to be clickable
+		            WebElement selectedDropdown = toggleDropdowns.get(selectedIndex);
+		            wait.until(ExpectedConditions.elementToBeClickable(selectedDropdown));
+
+		            // Click on the selected toggle dropdown
+		            selectedDropdown.click();
+
+		            // Optionally, verify that the dropdown was clicked or that some action occurred
+		            System.out.println("Clicked on toggle dropdown at index: " + (selectedIndex + 1));  // Show the user-friendly index
+		        } else {
+		            System.out.println("No toggle dropdowns found.");
+		        }
 		        
-		        JavascriptExecutor js5 = (JavascriptExecutor) driver;
-		        WebElement clickthreedots = driver.findElement(By.xpath("(//i[@class='fa fa-ellipsis-v'])[1]"));
-		        js5.executeScript("arguments[0].click();", clickthreedots);
-		        
+	        
 
 		        JavascriptExecutor js6 = (JavascriptExecutor) driver;
 		        WebElement clickdrt = driver.findElement(By.xpath("(//a[normalize-space()='DRT'])[1]"));
@@ -113,7 +165,7 @@ public class Drtcaseadd {
 		        WebElement clicklegalheirs = driver.findElement(By.xpath("//input[@id='LegalHeirDRT']"));
 		        clicklegalheirs.click();
 		        
-		        WebElement checkbox = driver.findElement(By.xpath("(//input[@id='DRTCheck_1162'])[1]"));
+		        WebElement checkbox = driver.findElement(By.className("Checkboxcheckcondition"));
 		        if (!checkbox.isSelected()) {
 		        	checkbox.click();
 		        }
@@ -145,7 +197,7 @@ public class Drtcaseadd {
 		        
 		        WebElement bench = driver.findElement(By.xpath("//select[@id='DrpBench']"));
 		        Select benchSelect = new Select(bench);
-		        benchSelect.selectByVisibleText("COIMBATORE");
+		        benchSelect.selectByVisibleText("CHENNAI1");
 		        
 		        //case type
 		        
@@ -162,7 +214,10 @@ public class Drtcaseadd {
 		        //Date of Filing
 		        
 		        WebElement DateofFiling = driver.findElement(By.xpath("//input[@id='TxtFilingDate']"));
-		        DateofFiling.sendKeys("21-01-2024");
+		        LocalDate today = LocalDate.now();
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		        String todayString = today.format(formatter);
+		        DateofFiling.sendKeys(todayString);
 		        
 		        //Role of Bank
 		        
@@ -172,28 +227,6 @@ public class Drtcaseadd {
 		        
 		        JavascriptExecutor js = (JavascriptExecutor) driver;
 		        js.executeScript("window.scrollBy(0,2000)");
-		        
-		        //Bank’s Advocate
-		        
-		        WebElement clickaddbutton2 = driver.findElement(By.xpath("//button[@id='BtnAdvctName']"));
-		        clickaddbutton2.click();
-		        
-		        WebElement StateofAdvocate = driver.findElement(By.xpath("//select[@id='DrpAdvDRTState']"));
-		        Select StateofAdvocateSelect = new Select(StateofAdvocate);
-		        StateofAdvocateSelect.selectByVisibleText("Kerala");
-		        WebElement DistrictofAdvocate = driver.findElement(By.xpath("//select[@id='DrpAdvDRTDistrict']"));
-		        Select DistrictofAdvocateSelect = new Select(DistrictofAdvocate);
-		        DistrictofAdvocateSelect.selectByVisibleText("Palakkad");
-		        WebElement clicksearchbutton= driver.findElement(By.xpath("//button[@id='BtnAdvIDDSearch']"));
-		        clicksearchbutton.click();
-		        
-		        WebElement checkbox2 = driver.findElement(By.xpath("(//input[@id='CheckDAdvt_1'])[1]"));
-		        if (!checkbox2.isSelected()) {
-		        	checkbox2.click();
-		        }
-		        
-		        WebElement clickaddbutton3 = driver.findElement(By.xpath("//button[@id='BtnAdvctSave']"));
-		        clickaddbutton3.click();
 		        
 		        //diary no
 		        
@@ -206,7 +239,7 @@ public class Drtcaseadd {
 		        //diary year
 		        WebElement diaryyear = driver.findElement(By.xpath("//select[@id='DrpDiaryYear']"));
 		        Select diaryyearSelect = new Select(diaryyear);
-		        diaryyearSelect.selectByVisibleText("2024");
+		        diaryyearSelect.selectByVisibleText("2025");
 		        
 		        //CNR No
 		      
@@ -223,7 +256,7 @@ public class Drtcaseadd {
 		        
 		        WebElement caseyear = driver.findElement(By.xpath("//select[@id='DrpCaseYear']"));
 		        Select caseyearSelect = new Select(caseyear);
-		        caseyearSelect.selectByVisibleText("2024");
+		        caseyearSelect.selectByVisibleText("2025");
 		        
    	        
 		        JavascriptExecutor js3 = (JavascriptExecutor) driver;

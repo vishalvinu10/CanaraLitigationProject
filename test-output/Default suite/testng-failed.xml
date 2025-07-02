@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="nclt.Admissionorderclaimdetails">
+      <class name="advocate_review.Quarter_review">
         <methods>
+          <include name="Quarterreview"/>
           <include name="setUp"/>
-          <include name="admission"/>
         </methods>
-      </class> <!-- nclt.Admissionorderclaimdetails -->
+      </class> <!-- advocate_review.Quarter_review -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

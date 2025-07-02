@@ -5,13 +5,9 @@
     <classes>
       
       <class name="drt.Drtcaseadd"/>
-      <class name="drt.TC_DRT_OO2"/>
-      <class name="drt.TC_DRT_OO3"/>
-      <class name="drt.TC_DRT_OO4"/>
-      <class name="drt.TC_DRT_OO5"/>
-      <class name="drt.TC_DRT_OO6"/>
-      <class name="drt.TC_DRT_OO7"/>
-       <class name="drt.TC_DRT_008"/>
+      <class name="drt.LOadvocate"/>
+      <class name="drt.AdvocateapproveDRT"/>
+    
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

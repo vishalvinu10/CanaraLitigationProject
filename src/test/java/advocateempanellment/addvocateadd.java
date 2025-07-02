@@ -82,8 +82,8 @@ public class addvocateadd {
 		    	@Test(priority=1)
 		    	public void testAddAdvocate() throws InterruptedException, IOException {
 		    		
-//		    	driver.get("http://192.168.0.137:8955/");	
-		        driver.get("https://safallitigation.onlinesafe.in/");
+		    	driver.get("http://192.168.0.137:8955/");	
+		       
 
 		        WebElement usernameField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"TxtAuthvalue\"]")));
 		        usernameField.sendKeys("BU");

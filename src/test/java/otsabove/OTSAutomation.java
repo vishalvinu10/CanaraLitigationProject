@@ -150,20 +150,27 @@ public class OTSAutomation {
 		@Test(priority = 1)
 		public void OTSabovetwolacs() throws InterruptedException, IOException {
 
-			driver.get("https://safallitigation.onlinesafe.in/");
+			driver.get("http://192.168.0.137:8955/");
 
 			WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TxtAuthvalue\"]")));
 			usernameField.sendKeys("BU");
 
 			WebElement signInButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"ButSignin\"]")));
 			signInButton.click();
-
-			WebElement clickots = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[9]/a[1]/span[2]")));
-			clickots.click();
-
-			WebElement otsabove = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[9]/ul[1]/li[1]/a[1]/span[2]")));
-			otsabove.click();
-
+			
+			Thread.sleep(2000);
+			
+			 WebElement otsabove = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("OTS")));
+			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", otsabove);
+			 Thread.sleep(2000);
+			 otsabove.click();
+		 	 
+			 Thread.sleep(2000);
+			 
+			 WebElement clickots = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("OTS")));
+			 clickots.click();
+			
+			 
 			WebElement clickeyebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='BtnOTSCustSelect fa fa-eye']")));
 			clickeyebutton.click();
 

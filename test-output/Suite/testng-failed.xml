@@ -7,7 +7,6 @@
         <methods>
           <include name="testAdddrtcase"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
         </methods>
       </class> <!-- drt.Drtcaseadd$drtcaseadd -->
     </classes>

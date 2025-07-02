@@ -62,7 +62,7 @@ public class Otsabovetwolac {
 		
 
 
-		 driver.get("https://safallitigation.onlinesafe.in/");
+		 driver.get("http://192.168.0.137:8955/");
 
 		 WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TxtAuthvalue\"]")));
 	        usernameField.sendKeys("BU");
@@ -70,10 +70,10 @@ public class Otsabovetwolac {
 	        WebElement signInButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"ButSignin\"]")));
 	        signInButton.click();
 
-	        WebElement clickots = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[9]/a[1]/span[2]")));
+	        WebElement clickots = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("OTS")));
 	        clickots.click();
 
-	        WebElement otsabove = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/nav[1]/div[2]/ul[1]/li[9]/ul[1]/li[1]/a[1]/span[2]")));
+	        WebElement otsabove = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("OTS BL >= 2 Lakhs")));
 	        otsabove.click();
 
 	        WebElement clickeyebutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='BtnOTSCustSelect fa fa-eye']")));
@@ -84,7 +84,7 @@ public class Otsabovetwolac {
 		
 		
 		WebElement nameofthegroup = driver.findElement(By.xpath("//input[@id='TxtOTSGroupName']"));
-		nameofthegroup.sendKeys("TEST");
+		nameofthegroup.sendKeys("SHDF CHE EDEHJEFG EHFEJ");
 		
 		WebElement originalbranch = driver.findElement(By.xpath("//input[@id='TxtOTSOriginalBranch']"));
 		originalbranch.sendKeys("palakkad");

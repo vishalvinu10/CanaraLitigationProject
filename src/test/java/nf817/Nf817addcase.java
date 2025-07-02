@@ -7,12 +7,25 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Nf817addcase {
 	
@@ -20,15 +33,30 @@ public class Nf817addcase {
 		
 		 private WebDriver driver;
 		 private WebDriverWait wait;
+		 List<String> inputData = new ArrayList<>(); 
 
 	    @BeforeClass
 	    public void setUp() {
 	        WebDriverManager.chromedriver().setup();
 	        driver = new ChromeDriver();
-	        driver.get("https://safallitigation.onlinesafe.in/");
+	        driver.get("http://192.168.0.137:8955/");
 	        driver.manage().window().maximize();
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	        
+	        // Define input data here
+	        inputData.add("But I must explain to you how all this mistaken idea of denouncing pleasure and "
+	        		+ "praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer "
+	        		+ "of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those "
+	        		+ "who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or "
+	        		+ "desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure."
+	        		+ " To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right "
+	        		+ "to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure");
+	        inputData.add("Data2");
+	        inputData.add("Data3");
+	        inputData.add("Data4");
+	        inputData.add("Data5");
+	        inputData.add("Data6");
+	        inputData.add("Data7");
 	        
 	    }
 
@@ -50,19 +78,29 @@ public class Nf817addcase {
 	        signInButton.click();
 
 //	        Thread.sleep(5000);
+
 	        
-	        WebElement clicknpa = driver.findElement(By.xpath("(//a[@class='waves-effect waves-dark'])[2]"));
-	        clicknpa.click();
-	        Thread.sleep(2000);
-	        WebElement addcaseNF817 = driver.findElement(By.xpath("//span[normalize-space()='Generate NF817']"));
+	        JavascriptExecutor npaclick = (JavascriptExecutor) driver;
+	        WebElement clicknpa = driver.findElement(By.linkText("NPA"));
+	        npaclick.executeScript("arguments[0].click();", clicknpa);
+//	        Thread.sleep(2000);
+	        WebElement addcaseNF817 = driver.findElement(By.linkText("Generate NF817"));
 	        addcaseNF817.click();
 	        
 //	        Thread.sleep(3000);
 	        
+	        JavascriptExecutor clickaccept = (JavascriptExecutor) driver;
+	        WebElement accept = driver.findElement(By.id("CloseNF817ImpNote"));
+	        clickaccept.executeScript("arguments[0].click();", accept);
+	        
 	        WebElement fromdate = driver.findElement(By.xpath("//input[@id='TxtNF817FromDate']"));
-	        fromdate.sendKeys("01-01-2019");
+	        fromdate.sendKeys("01-01-2025");
+	        
 	        WebElement todate = driver.findElement(By.xpath("//input[@id='TxtNF817ToDate']"));
-	        todate.sendKeys("06-08-2024");
+	        LocalDate today = LocalDate.now();
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+	        String todayString = today.format(formatter);
+	        todate.sendKeys(todayString);
 	        
 //	        Thread.sleep(3000);
 	        
@@ -80,50 +118,29 @@ public class Nf817addcase {
 	        WebElement oktoproceed = driver.findElement(By.xpath("//button[@id='BtnNF817OK']"));
 	        oktoproceed.click();
 	        
-//	        Thread.sleep(3000);
-	        
-	        WebElement reasonforsickness = driver.findElement(By.xpath("//tr[@role='row']//textarea[@class='form-control']"));
-		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'start'});", reasonforsickness);
-//         Thread.sleep(3000);
-		    reasonforsickness.sendKeys("reason");
-//         Thread.sleep(3000);
-		    
-//         WebElement advocate = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[12]/a[1]/i[1]"));
-//		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'start'});", advocate);
-//         Thread.sleep(3000);
-//         advocate.click();
-//         Thread.sleep(3000);
-//         WebElement Stateofadvocate = driver.findElement(By.xpath("//select[@id='DrpNF817State']"));
-//	        Select StateofadvocateSelect = new Select(Stateofadvocate);
-//	        StateofadvocateSelect.selectByVisibleText("Kerala");
-//	        WebElement districtofadvocate = driver.findElement(By.xpath("//select[@id='DrpNF817District']"));
-//	        Select districtofadvocateSelect = new Select(districtofadvocate);
-//	        districtofadvocateSelect.selectByVisibleText("Palakkad");
-//	        Thread.sleep(3000);
-//	        WebElement search1 = driver.findElement(By.xpath("//button[@id='BtnAdvIDDSearch']"));
-//	        search1.click();
-//	        Thread.sleep(3000);
-//	        WebElement checkadv = driver.findElement(By.xpath("(//input[@id='CheckDAdvt_1'])[1]"));
-//	        if (!checkadv.isSelected()) {
-//	        	checkadv.click();
-//	        }
-//	        Thread.sleep(3000);
-//	        WebElement add = driver.findElement(By.xpath("//button[@id='BtnNF817AdvctSave']"));
-//	        add.click();
-//	        Thread.sleep(2000);
-//	        
-//         
+	        Thread.sleep(2000);
+	        	    
+
          //reccommendations of the branch
          
 		    JavascriptExecutor js = (JavascriptExecutor) driver;
 	        js.executeScript("window.scrollBy(0,2000)");
-//	        Thread.sleep(3000);
-	        
-	        
-//	        WebElement filesuit = driver.findElement(By.xpath("//input[@id='ChkSuit']"));
-//	        if (!filesuit.isSelected()) {
-//	        	filesuit.click();
-//	        }
+
+	        // Iterate through the data and input into respective textareas
+	        for (int i = 1; i <= inputData.size(); i++) { // Start from 1 as index starts from 1 in xpath
+	            String xpath = "(//textarea[@class='form-control'])[" + i + "]";
+	            try {
+	                WebElement reasonforsickness = driver.findElement(By.xpath(xpath));
+	                reasonforsickness.clear();
+	                reasonforsickness.sendKeys(inputData.get(i - 1)); 
+	            } catch (org.openqa.selenium.NoSuchElementException e) {
+	                System.out.println("Textarea with index " + i + " not found. Skipping.");
+	                continue; // Skip to the next iteration
+	                
+	               
+	            }
+	        }
+	        // Proceed to the next step if all textareas are handled or some were skipped
 	        
 	        WebElement save = driver.findElement(By.xpath("//button[@id='BtnNF817Save']"));
 	        save.click();
